@@ -1,0 +1,138 @@
+<script>
+
+let listaParti = [];
+
+let listaPalest = [];
+
+const dataAtual = new Date(05/08/2022); 
+
+var continuar = "S";
+
+
+while (continuar == "S") {
+    
+    var dataEvent = prompt("Qual a data do evento? (dd/mm/aaaa) ")
+    
+    dataEvent = dataEvent.replace(/[/]+/g, "");
+    
+    var dataEvent = dataEvent.substring(4, 8) + "-" + dataEvent.substring(2, 4) + "-" + dataEvent.substring(0, 2); 
+    
+    var dataEvento = new Date(dataEvent); 
+
+    if (dataEvento > dataAtual) {
+    
+        while (listaParti.length < 100) {
+    
+            var continuar = "n"
+    
+            let idade = prompt("Qual a idade do participante/palestrante? ");
+
+
+            
+            if (idade >= 18) {
+            
+                let nome = prompt("Qual nome do participante/palestrante? ");
+            
+                let respostaPaPL = prompt("Agora, digite (PA) para participante ou (PL) para palestrante ")
+            
+                respostaPaPL = respostaPaPL.toLowerCase()
+
+
+                
+                if (respostaPaPL == "pa") {
+                
+                    listaParti.push(nome);
+                
+                    console.log("Palestrantes\n", listaPalest);
+                
+                    console.log("Participantes\n", listaParti);
+                
+                    let resposta = prompt("Você deseja adicionar outra pessoa? S / N");
+                
+                    resposta = resposta.toLocaleLowerCase();
+
+
+                    if (resposta == "S") {
+
+                        continue;
+
+                    } else {
+
+                        break
+
+                    }
+
+
+
+                } else if (respostaPaPL == "pl") {
+
+
+                    listaParti.push(nome);
+
+                    console.log("Palestrantes\n", listaPalest);
+
+                    console.log("Participantes\n", listaParti);
+
+                    let resposta = prompt("Você deseja adicionar outra pessoa? S / N");
+
+                    resposta = resposta.toLocaleLowerCase();
+
+
+                    if (resposta == "S") {
+                        continue;
+                    } else {
+                        break
+                    }
+
+                } 
+                
+                else {
+                    alert("Está opção não é válida")
+                    continue
+                }
+
+            }
+            
+            else {
+                alert("Cadastro nao permitido para menores de idade");
+                var continuar = prompt("Você deseja adicionar outra pessoa? S / N");
+                continuar = continuar.toLowerCase();
+
+                if (continuar == "S") {
+                    continue;
+
+                } 
+                
+                else {
+                    var continuar = "n"
+                    break
+                }
+
+            }
+        }
+
+    } 
+    
+    else {
+        alert("Data inválida");
+        var continuar = prompt("Você deseja informar uma nova data? S / N");
+        continuar = continuar.toLocaleLowerCase()
+
+        if (continuar == "S") {
+            continue;
+        } 
+        
+        
+        else {
+            var continuar = "n";
+        }
+    }
+}
+
+
+if (listaParti.length == 100) {
+   
+    alert("Evento cheio, desculpe!")
+}
+
+</script>
